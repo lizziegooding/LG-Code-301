@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Handlebars Template</title>
+  <!-- Handlebars template (now actually using handlebars library) -->
+  <script id="hello" type="text/x-handlebars-template">
+    Hello {{who}}, my name is {{name}}, and I like {{what}}
+  </script>
+</head>
+<body>
+  <!-- Element that will receive the compiled html -->
+  <div id="app"></div>
+  <!-- connect to jQuery and handlebars libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.min.js" charset="utf-8"></script>
+  <script>
+  // Define data object
+    var data = {
+      who: "Students",
+      name: "Ivan",
+      what: "Apples"
+    };
+    //Find app template
+    var appTemplate = $('#hello').html()
+    //use handlebars built in function to compile template (much more efficient than using jQuery alone)
+    var compiledTemplate = Handlebars.compile(appTemplate);
+    //pass the compiled template the data object
+    var html = compiledTemplate(data);
+    //Append to the #app element in the DOM
+    $('#app').append(html);
+  </script>
+
+</body>
+</html>

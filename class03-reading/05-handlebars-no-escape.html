@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Handlebars Template</title>
+  <link rel="stylesheet" type="text/css" href="style-for-05.css">
+  <!-- Handlebars template, accessing object properties of 'data'-->
+  <script id="hello" type="text/x-handlebars-template">
+    Hello {{who}}, my name is {{name}}, and I like {{what}}
+    <p><br></p>
+    <p><span class='label'>Double (i.e., escaped): </span> {{puppy_double}}</p>
+    <p><span class='label'>Triple (i.e., renders HTML):</span> {{{puppy_triple}}}</p>
+  </script>
+</head>
+<body>
+  <!-- Element that will receive the compiled html -->
+  <div id="app"></div>
+  <!-- connect to jQuery and handlebars libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.min.js" charset="utf-8"></script>
+  <script>
+  // Declare data object
+    var data = {
+      who: "Students",
+      name: "Ivan",
+      what: "Apples",
+      puppy_double: "Here is bold text: <b>I'm bold!</b><br>",
+      puppy_triple: "Here is bold text: <b>I'm bold!</b><br>",
+    };
+    //Get app template from the #hello element
+    var appTemplate = $('#hello').html()
+    //Compile template using handlebars
+    var compiledTemplate = Handlebars.compile(appTemplate);
+    //Pass data object as an argument to the compiled template
+    var html = compiledTemplate(data);
+    //Append to #app element
+    $('#app').append(html);
+  </script>
+<!-- Lesson: jquery + handlbars is a lot more efficien than jquery alone! -->
+</body>
+</html>

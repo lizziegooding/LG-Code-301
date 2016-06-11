@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <title>Minimal jQuery Template with words</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js" charset="utf-8"></script>
+  <!-- Handlebars template, accessing object properties of 'data'-->
+  <script id="hello" type="text/template">
+    Hello {{who}}, my name is {{name}}, and I like {{what}}
+  </script>
+</head>
+<body>
+  <!-- Element that will receive the compiled html -->
+  <div id="app"></div>
+  <script>
+  // Define data object
+    var data = {
+      who: "Students",
+      name: "Ivan",
+      what: "Apples"
+    };
+    // Compile template; again, not sure what's going on with the swapper and regex expressions-- think it's basically escaping out of the handlebars to access the key values directly and then finding them within the data object
+    var compile = function(template, expressions) {
+      return appTemplate.replace(/{{([A-Za-z]+)}}/g, swapper);
+      // where
+      function swapper(match, capture) {
+        return expressions[capture];
+      };
+    };
+    //Use jQuery to get #hello from the DOM
+    var appTemplate = $('#hello').html()
+    //Call compile template function
+    var compiledTemplate = compile(appTemplate, data);
+    //Append ttemplate to the #app element in the DOM
+    $('#app').append(compiledTemplate);
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Minimal jQuery Template</title>
+  <!-- Connect to jQuery library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js" charset="utf-8"></script>
+
+<!-- Create a template script -->
+  <script id="hello" type="text/template">
+    <!-- Text to print -->
+    Hello world
+  </script>
+</head>
+<body>
+  <!-- Where to print  -->
+  <div id="app"></div>
+  <!-- Use Jquery to define js; write #hello html to #app -->
+  <script>
+    $('#app').append($('#hello').html());
+  </script>
+
+</body>
+</html>

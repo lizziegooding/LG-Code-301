@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <title>Minimal jQuery Template with Regex</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js" charset="utf-8"></script>
+  <!-- Handlebars template, accessing array indexes of data-->
+  <script id="hello" type="text/template">
+    Hello {{0}}, my name is {{1}}, and I like {{2}}
+  </script>
+</head>
+<body>
+  <!-- Where to write templated text to -->
+  <div id="app"></div>
+  <script>
+  // Compile template
+    var compile = function(template, expressions) {
+      //Not exactly sure what this regular expression is doing here. The HTML runs as expected, can't figure out what it's swapping
+      return appTemplate.replace(/{{(\d+)}}/g, swapper);
+      // where
+      function swapper(match, number) {
+        return expressions[number];
+      };
+    };
+    //Get app template from the above script tags
+    var appTemplate = $('#hello').html()
+    //Compile template using array data directly in script
+    var compiledTemplate = compile(appTemplate, ["Students", "Ivan", "Apples"]);
+    //Append compiled template to the DOM
+    $('#app').append(compiledTemplate);
+  </script>
+
+</body>
+</html>
