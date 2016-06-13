@@ -13,6 +13,7 @@
 <div class="divBlock">
 <h3>Raw markdown w/ content. Edit this!</h3>
 <!-- Pre-load text area with "marked down" content -->
+<!-- 1. Units: rows= number of visible lines for the control, cols= average character widths -->
 <textarea rows="20" cols="60" id="tBody" class="pCommon pRaw">
 Plain text<br>
 _italics text_
@@ -60,8 +61,10 @@ Unordered list:
 
 <script src="http://code.jquery.com/jquery-2.2.3.min.js"></script>
 <script src="vendor/js/highlight.min.js"></script>
-<script src="vendor/js/marked.min.js"></script>
+<!-- 2. Attaches highlighting to the page load event; Error is thrown if this call to the highlight library occurs before the above tag -->
 <script>hljs.initHighlightingOnLoad();</script>
+
+<script src="vendor/js/marked.min.js"></script>
 <script src="js/render.js"></script>
 
 </body>
