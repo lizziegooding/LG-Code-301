@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!-- 1. Write your own app from scratch that lets the user enter text (you can use <textarea>, <select>, etc.), and covert that text to HTML, with proper handling (conversion) of any markdown contained in that text, and render the HTML.
+2. Add a button that, when clicked, causes user-entered text to be converted to HTML (with proper markdown handling) and appends the HTML to the DOM. Repeated clicks of the button will cause repeated copies to be appended. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8"></meta>
+  <link rel="stylesheet" href="vendor/css/highlight_gruvbox-dark.css">
+  <link rel="stylesheet" type="text/css" href="css/app.css">
+  <title>Markdown/Highlight Sandbox</title>
+</head>
+
+<body>
+<h1>Markdown/Highlight Sandbox</h1>
+
+<div class="divBlock">
+<h3>Raw markdown w/ content. Edit this!</h3>
+<textarea rows="20" cols="60" id="input" class="pCommon pRaw">
+Plain text<br>
+_italics text_
+
+    // Example code block:
+    function render() {
+      var bodVal = tBody.val(); // Raw article markup
+      var m = marked(bodVal); // Convert markup to html
+      $(m).filter('pre').each(function(i, block) { hljs.highlightBlock(block); });
+    }
+
+# Heading 1
+## Heading 2
+### Heading 3
+
+Unordered list:
+* Protein
+* Fiber
+</textarea>
+</div>
+
+<div class="divBlock">
+  <h3>Live markdown output (read-only)</h3>
+  <p id="output" class="pCommon"></p>
+</div>
+
+<button>Convert Markup to HTML</button>
+
+<script src="http://code.jquery.com/jquery-2.2.3.min.js"></script>
+<script src="vendor/js/highlight.min.js"></script>
+<!-- Attaches highlighting to the page load event; Error is thrown if this call to the highlight library occurs before the above tag -->
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script src="vendor/js/marked.min.js"></script>
+<script src="sandbox.js"></script>
+
+</body>
+</html>
