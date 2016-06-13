@@ -24,9 +24,9 @@
     };
     //Find app template
     var appTemplate = $('#input').html()
-    //use handlebars built in function to compile template (much more efficient than using jQuery alone)
+    //Use handlebars built in function to compile template; what's returned is a function
     var compiledTemplate = Handlebars.compile(appTemplate);
-    //pass the compiled template the data object
+    //Pass the compiled template function the data object; returns a string of html
     var html = compiledTemplate(data);
     //Append to the #app element in the DOM
     $('#output').append(html);
