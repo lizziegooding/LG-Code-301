@@ -1,5 +1,7 @@
 // var p = document.querySelector('p');
 var $p = $('p');
+var $h2 = $('h2');
+var $h3 = $('h3');
 
 function setRouteMappings() {
   page.base('/');
@@ -13,9 +15,19 @@ function setRouteMappings() {
   page();
 }
 
-function index() { $p.text('viewing index (home)'); }
-function about() { $p.text('viewing about'); }
+function index() {
+  $h2.text('Home');
+  $h3.text('aka index');
+  $p.text('viewing index (home)');
+}
+function about() {
+  $h2.text('About');
+  $h3.text('some things about me');
+  $p.text('viewing about');
+}
 function contact(ctx) {
+  $h2.text('Contact');
+  $h3.text('contact page');
   $p.text('viewing contact ' + (ctx.params.contactName || ''));
 }
 function notfound() {
