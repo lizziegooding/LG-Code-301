@@ -1,4 +1,5 @@
-var p = document.querySelector('p');
+// var p = document.querySelector('p');
+var $p = $('p');
 
 function setRouteMappings() {
   page.base('/');
@@ -12,16 +13,16 @@ function setRouteMappings() {
   page();
 }
 
-function index() { p.textContent = 'viewing index (home)'; }
-function about() { p.textContent = 'viewing about'; }
+function index() { $p.text('viewing index (home)'); }
+function about() { $p.text('viewing about'); }
 function contact(ctx) {
-  p.textContent = 'viewing contact ' + (ctx.params.contactName || '');
+  $p.text('viewing contact ' + (ctx.params.contactName || ''));
 }
 function notfound() {
-  p.innerHTML = '<h3>OMG!</h3><p>The page at "'
+  $p.html('<h3>OMG!</h3><p>The page at "'
               + location.hostname + location.pathname + location.search
               + '" can\'t be found (like a bridge over troubled water, ya\' know)!</p>'
-              + '<img src="lost.jpg"></img>';
+              + '<img src="lost.jpg"></img>');
 }
 
 setRouteMappings();
