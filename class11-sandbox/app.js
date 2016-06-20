@@ -88,10 +88,12 @@ function contact(ctx) {
 }
 function articles() {
   $('body').children().hide();
+  $('nav').show();
   initIndexPage();
   $articles.show();
 }
 function notfound() {
+  $articles.hide();
   $p.html('<h3>OMG!</h3><p>The page at "'
               + location.hostname + location.pathname + location.search
               + '" can\'t be found (like a bridge over troubled water, ya\' know)!</p>'
