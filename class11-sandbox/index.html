@@ -5,6 +5,19 @@
     <script src="/page.js"></script>
     <base href="/" >
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/default.min.css">
+    <script id="article-template" type="text/x-handlebars-template">
+      <article data-author="{{author}}">
+        <header>
+          <h1>{{title}}</h1>
+          <div>
+            By {{author}}<br>
+            Published in {{pubYear}}
+          </div>
+        </header>
+        <section class="article-body">{{{body}}}</section>
+      </article>
+    </script>
   </head>
   <body>
     <h1>Mini-app: page.js demo</h1>
@@ -18,12 +31,24 @@
         <li><a href="contact/you">/contact/you</a></li>
         <li><a href="#whoop">#whoop</a></li>
         <li><a href="not-found?foo=bar">/not-found</a></li>
+        <li><a href="articles">/articles</a></li>
       </ul>
     </nav>
     <h2></h2>
     <h3></h3>
     <p></p>
-    <script src="jquery-2.1.4.js"></script>
+    <div id="articles">
+    Articles</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/highlight.min.js"></script>
     <script src="app.js"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+      console.log('Calling fetchAll(initIndexPage)')
+      Article.fetchAll(initIndexPage);
+    </script>
+
   </body>
 </html>
