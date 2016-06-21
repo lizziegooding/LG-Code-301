@@ -46,9 +46,9 @@ Article.fetchAll = function(a) {
 function initIndexPage() {
   Article.all.forEach(function(a){
     $articles.append(a.toHtml());
-    $articles.find('pre code').each(function(i, block) {
-      hljs.highlightBlock(block); // Syntax-highlight each code block "in place"
-    });
+  });
+  $articles.find('pre code').each(function(i, block) {
+    hljs.highlightBlock(block); // Syntax-highlight each code block "in place"
   });
 };
 
@@ -89,7 +89,6 @@ function contact(ctx) {
 function articles() {
   $('body').children().hide();
   $('nav').show();
-  initIndexPage();
   $articles.show();
 }
 function notfound() {
